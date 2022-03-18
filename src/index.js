@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Student from './pages/Student';
 import reportWebVitals from './reportWebVitals';
+
+// load library bootstrap for styling
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.bundle"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Student />
   </React.StrictMode>,
   document.getElementById('root')
 );
