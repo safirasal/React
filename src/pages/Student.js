@@ -84,6 +84,21 @@ export default function Student(props){
         setEditID(false)
     }
 
+    let deleteStudent = siswa => {
+        if(window.confirm(`Are you sure want to delete this data`)){
+            // store array students to temp 
+            let temp = [...students]
+
+            // find index of selected data in array
+            let index = temp.findIndex(sis => sis.id === siswa.id)
+
+            // delete data from array based on founded index
+            temp.splice(index, 1)
+
+            // 
+            setStudents(temp)
+        }
+    }
     return(
         <div>
             <div className="card col-10">
@@ -117,7 +132,8 @@ export default function Student(props){
                                 </button>
 
                                 {/* delete button */}
-                                <button className="btn btn-danger mx-1">
+                                <button className="btn btn-danger mx-1"
+                                onClick={() => editStudent(item)}>
                                     Delete
                                 </button>
                             </div>
@@ -129,7 +145,24 @@ export default function Student(props){
                     onClick={() => addStudent()}>
                         Add
                     </button>
+                    {/* create dropdown using name */}
+                    <select>
+                    {students.map(item => (
+                            <option value={item.id}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
 
+
+                    {/**create Display Radio */}
+                    {students.map(item => (
+                       <div>
+                         <input type={`radio`} name={`name`}
+                         value={item.id}/>
+                         <label>{item.name} Tgl: {item.birthdate}</label>
+                       </div>
+                     ))}
                     {/* modal component */}
                     <div className="modal" id="modal_student">
                         <div className="modal-dialog">
